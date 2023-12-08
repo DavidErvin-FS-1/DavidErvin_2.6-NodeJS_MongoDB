@@ -6,15 +6,13 @@ const getAllCustomers = (req, res) => {
 };
 
 const getCustomerById = (req, res) => {
-  (req, res) => {
-    const { id } = req.params;
+  const { id } = req.params;
 
-    res.status(200).json({
-      id,
-      success: true,
-      message: `${req.method} - Request a customer!`,
-    });
-  };
+  res.status(200).json({
+    id,
+    success: true,
+    message: `${req.method} - Request a customer!`,
+  });
 };
 
 const createCustomer = (req, res) => {
