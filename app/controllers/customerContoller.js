@@ -10,11 +10,13 @@ const getAllCustomers = async (req, res) => {
   });
 };
 
-const getCustomerById = (req, res) => {
+const getCustomerById = async (req, res) => {
   const { id } = req.params;
+  const customer = await Customer.findById(id);
+  console.log(customer);
 
   res.status(200).json({
-    id,
+    data: customer,
     success: true,
     message: `${req.method} - Request a customer!`,
   });
@@ -22,8 +24,8 @@ const getCustomerById = (req, res) => {
 
 const createCustomer = async (req, res) => {
   const data = req.body;
-  const createCustomer = await Customer.create(data);
-  console.log(createCustomer);
+  const customer = await Customer.create(data);
+  console.log(customer);
 
   res.status(200).json({
     success: true,
