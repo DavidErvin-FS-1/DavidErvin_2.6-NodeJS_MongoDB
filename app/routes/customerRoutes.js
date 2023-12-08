@@ -1,3 +1,4 @@
+const router = require('express').Router();
 const {
   getAllCustomers,
   getCustomerById,
@@ -5,8 +6,6 @@ const {
   createCustomer,
   deleteCustomer,
 } = require('../controllers/customerContoller');
-
-const router = require('express').Router();
 
 // GET from /api/v1/customer
 router.get('/', getAllCustomers);
