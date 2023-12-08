@@ -1,7 +1,10 @@
 const Customer = require('../models/Customers');
 
-const getAllCustomers = (req, res) => {
+const getAllCustomers = async (req, res) => {
+  const customers = await Customer.find({});
+
   res.status(200).json({
+    data: customers,
     success: true,
     message: `${req.method} - Request all customers!`,
   });
