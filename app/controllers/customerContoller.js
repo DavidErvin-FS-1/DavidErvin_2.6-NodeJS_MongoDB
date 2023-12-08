@@ -17,7 +17,11 @@ const getCustomerById = (req, res) => {
   });
 };
 
-const createCustomer = (req, res) => {
+const createCustomer = async (req, res) => {
+  const data = req.body;
+  const createCustomer = await Customer.create(data);
+  console.log(createCustomer);
+
   res.status(200).json({
     success: true,
     message: `${req.method} - Create a customer!`,
