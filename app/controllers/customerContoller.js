@@ -51,6 +51,8 @@ const updateCustomer = async (req, res) => {
 
 const deleteCustomer = async (req, res) => {
   const { id } = req.params;
+  const customer = await Customer.findByIdAndDelete(id);
+  console.log(customer);
 
   res.status(200).json({
     id,
