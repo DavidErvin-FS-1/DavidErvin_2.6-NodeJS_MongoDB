@@ -1,3 +1,5 @@
+const Customer = require('../models/Customers');
+
 const getAllCustomers = (req, res) => {
   res.status(200).json({
     success: true,
