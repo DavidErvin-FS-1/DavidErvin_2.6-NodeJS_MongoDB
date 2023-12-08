@@ -31,11 +31,17 @@ const createCustomer = async (req, res) => {
   });
 };
 
-const updateCustomer = (req, res) => {
+const updateCustomer = async (req, res) => {
   const { id } = req.params;
+  const data = req.body;
+
+  const customer = await Customer.findByIdAndUpdate(id, data, {
+    new: true,
+  });
+  console.log(customer);
 
   res.status(200).json({
-    id,
+    data: customer,
     success: true,
     message: `${req.method} - Update a customer!`,
   });
