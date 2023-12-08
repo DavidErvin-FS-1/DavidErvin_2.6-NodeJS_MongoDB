@@ -1,4 +1,7 @@
+// app/routes/index.js
+
 const express = require('express');
+const customerRoutes = require('./customerRoutes');
 
 const router = express.Router();
 
@@ -8,5 +11,7 @@ router.get('/', (req, res) => {
     success: true,
   });
 });
+
+router.use('/customer', customerRoutes);
 
 module.exports = router;
