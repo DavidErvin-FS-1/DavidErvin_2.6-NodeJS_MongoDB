@@ -1,5 +1,5 @@
 const Order = require('../models/Orders');
-const errorHandler = require('../helpers/errorHandler');
+const { errorHandler } = require('../helpers/errorHandler');
 
 const getAllOrders = async (req, res) => {
   try {

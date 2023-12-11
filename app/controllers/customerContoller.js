@@ -1,5 +1,5 @@
 const Customer = require('../models/Customers');
-const errorHandler = require('../helpers/errorHandler');
+const { errorHandler } = require('../helpers/errorHandler');
 
 const getAllCustomers = async (req, res) => {
   try {
