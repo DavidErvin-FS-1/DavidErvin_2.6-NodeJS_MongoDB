@@ -1,25 +1,40 @@
 const mongoose = require('mongoose');
 
-const customerSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: [true, 'Name is required'],
-      trim: true,
-      unique: true,
-    },
-    email: {
-      type: String,
-      required: [true, 'Email is required'],
-      trim: true,
-      unique: true,
-      match: [
-        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-        'Please provide a valid email address',
-      ],
+const customerSchema = new mongoose.Schema({
+  firstName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+    lowercase: true,
+    match: /^\S+@\S+\.\S+$/,
+  },
+  phoneNumber: {
+    type: String,
+    required: true,
+    trim: true,
+    validate: {
+      validator: function (v) {
+        return /\d{3}-\d{3}-\d{4}/.test(v);
+      },
+      message: (props) =>
+        `${props.value} is not a valid phone number! (Use format: xxx-xxx-xxxx)`,
     },
   },
-  { timestamps: true }
-);
+  registrationDate: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
 module.exports = mongoose.model('Customer', customerSchema);
