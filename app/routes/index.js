@@ -2,6 +2,7 @@
 
 const express = require('express');
 const customerRoutes = require('./customerRoutes');
+const orderRoutes = require('./orderRoutes');
 
 const router = express.Router();
 
@@ -13,5 +14,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/customer', customerRoutes);
+router.use('/order', orderRoutes);
 
 module.exports = router;
